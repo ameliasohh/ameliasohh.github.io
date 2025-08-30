@@ -1,0 +1,106 @@
+body {
+
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    background-color: rgb(255, 221, 252); 
+    /* note: alpha controls the opacity of the color, so we can use 
+    rgba(0, 0, 255, 0.5) for a 50% transparency */
+    max-width: 800px;
+    margin: auto; 
+    /* every block element gets centered horizontally, because auto margin 
+    pushes it into the middle of the container */
+}
+h1 { 
+    color: rgb(237, 108, 129);
+    letter-spacing: 2px;
+    font-weight: 900;
+    font-size: 40px;
+    text-align: center;
+    padding: 15px;
+}
+
+p {
+    text-align: center;
+    font-size:14px;
+}
+
+.site-header {
+    box-shadow: 0 4px 10px;
+    margin: 30px 0px;
+    background-color: rgb(237, 255, 182);
+    border: 2px solid black;
+    border-radius: 20px;
+    padding: 10px;
+
+}
+
+.facts{
+
+    line-height: 25px;
+    flex: 1; /* takes remaining space */
+}
+.about-me {
+  display: flex;            /* Arrange children side by side */
+    gap: 10px; /* Space between text and image */
+  max-width: 800px; 
+  margin: 20px auto; /* center */
+  padding: 20px;
+    border: 2px solid rgb(187, 187, 196);
+    border-radius: 20px;
+    background-color: antiquewhite;
+}
+
+.travel {
+  background-color:lavender ;
+  border-radius: 20px;
+  border: 2px solid rgb(187, 187, 196);
+}
+.facts-image img {
+  border-radius: 12px;      /* Optional: round the corners */
+  width: 350px;          /* Make responsive if container shrinks */
+  height: auto;
+  flex-shrink: 0;           /* prevent shrinking */
+
+}
+.facts-image2 {
+  padding: 20px 0px 0px 20px;
+
+}
+.facts-image2 img {
+
+  border-radius: 20px; 
+  height:auto;
+  flex-shrink: 0;
+  width: 200px;
+}
+.travel p {
+  font-size: 20px;
+  line-height: 30px;
+}
+.video {
+  padding: 20px;
+  display: flex;           /* make it a flex container */
+  justify-content: center; /* center horizontally */
+  align-items: center;     /* center vertically */
+}
+.others{
+  background-color:cornsilk ;
+  border-radius: 20px;
+  border: 2px solid rgb(187, 187, 196);
+  line-height: 40px;
+
+}
+
+.others p{
+  text-align: left;
+  padding-left: 20px;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 20px;
+}
+ul.a{
+  list-style-type: "✨ ";  /* adds an emoji before each item */
+  padding-left: 2.2em;     /* spacing so text doesn’t overlap emoji */
+}
+ul.b{
+  list-style-type: "❤️ ";  /* adds an emoji before each item */
+  padding-left: 2.2em;     /* spacing so text doesn’t overlap emoji */
+}
