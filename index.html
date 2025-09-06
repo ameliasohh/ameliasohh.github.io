@@ -5,23 +5,47 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Challenge 1 - CSS Land - Welcome</title>
     <link rel="stylesheet" href="style.css"/>
-</head>
-<body>
 
-<div class='container'>
+        <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+
+    <!-- External CSS -->
+    <link rel="stylesheet" href="styles.css">
+
+</head>
+
+<body>
+<ul class="nav nav-tabs bg-light">
+  <li class="nav-item">
+    <a class="nav-link active" aria-current="page" href="#">Active</a>
+  </li>
+  <li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Dropdown</a>
+    <ul class="dropdown-menu">
+      <li><a class="dropdown-item" href="#about-me">About Me</a></li>
+      <li><a class="dropdown-item" href="#travel">Favourite Travel Destination</a></li>
+      <li><a class="dropdown-item" href="#album">Albums</a></li>
+      <li><hr class="dropdown-divider"></li>
+      <li><a class="dropdown-item" href="#link">Github Links</a></li>
+    </ul>
+
+</ul>
+<div class='container-fluid'>
+
 <header class="site-header">
+    
 <h1> Amelia Soh </h1>
 <p> The Quiet, Tired and Always Hungry Girl </p>
 </header>
 
-<h3> About Me </h3>
+<h3 id="about-me"> About Me </h3>
 <div class="about-me">
 <div class="facts">
 I am...
 <ul> 
     <li>20 Years Old </li>
     <li>From Information Systems</li>
-    <li>A BIG Fan of ART & Playing Games </li>
+    <li>A BIG Fan of ANYTH ARTSY & Playing Games </li>
     <li>The Youngest Child</li>
     <li>A Cat and Dog Lover </li>
     <div class="facts-image2"><img src="photo2.jpg" alt="Me2"></div>
@@ -36,14 +60,22 @@ I am...
 
 </div>
 
-<h3> Favourite Travel Destination </h3>
+<p class="d-inline-flex gap-1">
+<button class="btn btn-success" type="button" data-bs-target="#collapse" data-bs-toggle="collapse"> Click Here! </button>
+
+<div class="collapse" id="collapse">
+    <div class="card card-body"> Wow! You just wasted 5 seconds reading this... </div>
+</div> 
+</p>
+
+<h3 id="travel"> Favourite Travel Destination </h3>
 <div class="travel">
     <p> I LOVE LOVE Japan! I've went to Tokyo, Osaka, Fukuoka, Nagasaki and Kyoto. 
         I love ramen, sushi, don-katsu and udon very much :P
         
     </p>
     <div class="video">
-     <iframe width="700" height="515" 
+   <iframe width="700" height="515" 
   src="https://www.youtube.com/embed/oDogmhb5aZo?autoplay=1&mute=1&si=vILwGdMWhn8Y6E_6" 
   title="YouTube video player" 
   frameborder="0" 
@@ -51,24 +83,79 @@ I am...
   referrerpolicy="strict-origin-when-cross-origin" 
   allowfullscreen>
 </iframe>
+
 </div>
 <p> Fun Fact: Do you know that Fukuoka is the origin of tonkotsu ramen, a popular ramen dish made with a rich pork-bone broth?</p>
 </div>
-<h3> GITHUB LINKS </h3>
+<!-- <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3-g-3"> -->
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 mb-4" id="album">
+
+
+    <div class="col">
+    <div class="card mb-4 h-100" style="width:18rem;">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSEeYLYW4cDyUWeCxk3zE2AIp6Tkbw-r4YVRQ&s" class="card-img-top">
+    <div class="card-body">
+        <h5 class="card-title"> Fav Tonkatsu in Singapore </h5>
+        <p class="card-text text-start"> Located in Takashimaya, this famous Japanese tonkatsu with 25 
+            layers is crunchy and tender. My personal favourite is the cheese kimukatsu set.   </p>
+        <a href="https://kimukatsu.getz.co/" class="btn btn-primary"> Link to the website </a>
+    </div>
+</div>
+</div>
+<div class="col">
+<div class="card mb-4 h-100" style="width:18rem;">
+    <img src="https://www.capitaland.com/sg/malls/lotone/en/stores/xiang-xiang-hunan-cu-1797146869/_jcr_content/root/container/container/entitydetails.coreimg.jpeg/content/dam/capitaland-sites/singapore/shop/malls/lot-one/tenants/LO_XXHN_2025.jpg" class="card-img-top">
+    <div class="card-body">
+        <h5 class="card-title"> Fav Hunan Cuisine </h5>
+        <p class="card-text text-start"> Xiang Xiang Hunan Cuisine is famous for its golden broth sour and spicy fish, beef stir fry and stir-fry pork.   </p>
+        <a href="https://xiangxianghunancuisine.com/" class="btn btn-primary"> Link to the website </a>
+    </div>
+</div>
+</div>
+<div class="col">
+<div class="card mb-4 h-100" style="width:18rem;">
+    <img src="https://m.media-amazon.com/images/M/MV5BNzRhNTE4ZTYtNTM0Mi00MzU3LTk4MTktYWE3MzQ2NTU0MDNlXkEyXkFqcGc@._V1_.jpg">
+    <div class="card-body">
+        <h5 class="card-title"> Musical Movie </h5>
+        <p class="card-text text-start"> Wicked is a fantasy film focusing on good versus evil, prejudice, and the complex choices that 
+            shape people's life. 
+        </p>
+        <a href="https://www.youtube.com/watch?v=6COmYeLsz4c" class="btn btn-danger"> Watch the trailer now! </a>
+    </div>
+</div>
+</div>
+
+</div>
+
+
+
+<h3 id="link"> GITHUB LINKS </h3>
 <div class="others">
     <p>Week 1</p>
-    <hr>
+    
     <ul class="a">
         <li><a href="https://ameliasohh.github.io/fanpage.html/"> Justin's Fanpage </a></li> </ul>
+        <hr>
     <p>Week 2</p>
-    <hr>
     <ul class="b">
-    <li><a href="https://ameliasohh.github.io/week2/Challenge1/home.html"> ICE Challenge 1 </a></li>
-    <li><a href="https://ameliasohh.github.io/week2/Challenge2/home.html"> ICE Challenge 2 </a></li>
-    <li><a href="https://ameliasohh.github.io/week2/Challenge3/home.html"> ICE Challenge 3 </a></li>
-     </ul>
+        <li><a href="https://ameliasohh.github.io/week2/Challenge1/home.html"> ICE Challenge 1 </a></li>
+        <li><a href="https://ameliasohh.github.io/week2/Challenge2/home.html"> ICE Challenge 2 </a></li>
+        <li><a href="https://ameliasohh.github.io/week2/Challenge3/home.html"> ICE Challenge 3 </a></li>
+    </ul>
+    <hr>
+     <p> Week 3 </p>
+     <ul class="c">
+         <li><a href="https://ameliasohh.github.io/week3/Challenge1/home.html"> ICE Challenge 1 </a></li>
+         <li><a href="https://ameliasohh.github.io/week3/Challenge2/home.html"> ICE Challenge 2 </a></li>
+         <li><a href="https://ameliasohh.github.io/week3/Challenge3/home.html"> ICE Challenge 3 </a></li>
+        </ul>
+        <hr>
+
 </div>
-</div>
+
+ <!-- Bootstrap JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
+
 
 </body>
 </html>
