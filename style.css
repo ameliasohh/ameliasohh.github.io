@@ -1,14 +1,16 @@
+/*
 body {
 
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     background-color: rgb(255, 221, 252); 
-    /* note: alpha controls the opacity of the color, so we can use 
-    rgba(0, 0, 255, 0.5) for a 50% transparency */
+    note: alpha controls the opacity of the color, so we can use 
+    rgba(0, 0, 255, 0.5) for a 50% transparency 
     max-width: 800px;
     margin: auto; 
     /* every block element gets centered horizontally, because auto margin 
-    pushes it into the middle of the container */
-}
+    pushes it into the middle of the container 
+} */
+
 h1 { 
     color: rgb(237, 108, 129);
     letter-spacing: 2px;
@@ -18,9 +20,18 @@ h1 {
     padding: 15px;
 }
 
+
+.container-fluid{
+  background-color: pink;
+}
+
 p {
     text-align: center;
     font-size:14px;
+}
+
+h3{
+  text-align: center;
 }
 
 .site-header {
@@ -53,6 +64,7 @@ p {
   background-color:lavender ;
   border-radius: 20px;
   border: 2px solid rgb(187, 187, 196);
+  margin-bottom: 30px;
 }
 .facts-image img {
   border-radius: 12px;      /* Optional: round the corners */
@@ -87,7 +99,6 @@ p {
   border-radius: 20px;
   border: 2px solid rgb(187, 187, 196);
   line-height: 40px;
-
 }
 
 .others p{
@@ -104,3 +115,10 @@ ul.b{
   list-style-type: "❤️ ";  /* adds an emoji before each item */
   padding-left: 2.2em;     /* spacing so text doesn’t overlap emoji */
 }
+
+ul.c{
+  list-style-type:"🎀 ";  /* adds an emoji before each item */
+  padding-left: 2.2em;     /* spacing so text doesn’t overlap emoji */
+}
+
+
