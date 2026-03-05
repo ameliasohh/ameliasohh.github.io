@@ -4,25 +4,25 @@ import './Favourites.css';
 
 const favourites = [
     {
-        image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSEeYLYW4cDyUWeCxk3zE2AIp6Tkbw-r4YVRQ&s',
+        emoji: '🍱',
         title: 'Kimukatsu',
         subtitle: 'Fav Tonkatsu in Singapore',
         desc: 'Located in Takashimaya, this famous Japanese tonkatsu with 25 layers is crunchy and tender. My personal favourite is the cheese kimukatsu set.',
-        link: 'https://kimukatsu.getz.co/',
-        linkLabel: 'Visit restaurant',
+        link: 'https://www.google.com/search?q=kimukatsu+singapore',
+        linkLabel: 'Learn more',
         color: '#ffecd2',
     },
     {
-        image: 'https://www.capitaland.com/sg/malls/lotone/en/stores/xiang-xiang-hunan-cu-1797146869/_jcr_content/root/container/container/entitydetails.coreimg.jpeg/content/dam/capitaland-sites/singapore/shop/malls/lot-one/tenants/LO_XXHN_2025.jpg',
+        emoji: '🌶️',
         title: 'Xiang Xiang',
         subtitle: 'Fav Hunan Cuisine',
         desc: 'Famous for its golden broth sour and spicy fish, beef stir fry and stir-fry pork.',
-        link: 'https://xiangxianghunancuisine.com/',
-        linkLabel: 'Visit restaurant',
+        link: 'https://www.google.com/search?q=xiang+xiang+hunan+cuisine',
+        linkLabel: 'Learn more',
         color: '#fce4ec',
     },
     {
-        image: 'https://m.media-amazon.com/images/M/MV5BNzRhNTE4ZTYtNTM0Mi00MzU3LTk4MTktYWE3MzQ2NTU0MDNlXkEyXkFqcGc@._V1_.jpg',
+        emoji: '🎭',
         title: 'Wicked',
         subtitle: 'Fav Musical Movie',
         desc: 'A fantasy film focusing on good versus evil, prejudice, and the complex choices that shape people\'s lives.',
@@ -68,7 +68,7 @@ export default function Favourites() {
                             whileHover={{ y: -8 }}
                         >
                             <div className="favourites__image-wrapper">
-                                <img src={item.image} alt={item.title} className="favourites__image" />
+                                <span className="favourites__emoji">{item.emoji}</span>
                             </div>
                             <div className="favourites__body">
                                 <span className="favourites__label">{item.subtitle}</span>
