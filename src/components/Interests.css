@@ -1,0 +1,49 @@
+.interests {
+    background: var(--clr-bg-alt);
+}
+
+.interests__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+.interests__card {
+    padding: 32px 24px;
+    text-align: center;
+    cursor: default;
+    perspective: 600px;
+}
+
+.interests__icon {
+    font-size: 2.8rem;
+    margin-bottom: 16px;
+    display: block;
+}
+
+.interests__title {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: var(--clr-text);
+}
+
+.interests__desc {
+    font-size: 0.9rem;
+    color: var(--clr-text-muted);
+    line-height: 1.6;
+}
+
+@media (max-width: 900px) {
+    .interests__grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .interests__grid {
+        grid-template-columns: 1fr;
+        max-width: 400px;
+        margin: 0 auto;
+    }
+}
