@@ -24,7 +24,7 @@ export default function Footer() {
                 >
                     <div className="footer__brand">
                         <span className="footer__logo"> Amelia Soh</span>
-                        <p className="footer__tagline">ameliasoh05@gmail.com</p>
+                        <p className="footer__tagline"> Connect with me! :D</p>
                     </div>
 
                     <div className="footer__links">
@@ -45,7 +45,14 @@ export default function Footer() {
                             rel="noopener noreferrer"
                             className="footer__social-link"
                         >
-                            Linkedin
+                             LinkedIn
+                        </a>
+                                                <a href="mailto:ameliasoh05@gmail.com"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="footer__social-link"
+                        >
+                             Gmail
                         </a>
                     </div>
                 </motion.div>
