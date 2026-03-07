@@ -1,34 +1,86 @@
-import { motion, useInView } from 'framer-motion';
-import { useRef } from 'react';
+import { motion, useInView, AnimatePresence } from 'framer-motion';
+import { useRef, useState, useEffect, useCallback } from 'react';
 import './Projects.css';
 
-const weeks = [
+const projects = [
     {
-        week: 'Week 1',
-        emoji: '✨',
+        name: 'CritterConnect',
+        emoji: '🐾',
+        images: ['/Project1.png', '/Project2.png'],
         items: [
-            { label: "Justin's Fanpage", url: 'https://ameliasohh.github.io/fanpage.html/' },
+            { label: "CritterConnect Website", url: 'https://wad2-92dca.web.app/' },
         ],
     },
     {
-        week: 'Week 2',
-        emoji: '❤️',
+        name: 'PocketPlan',
+        emoji: '💰',
+        images: ['/Project1.png', '/Project2.png'],
         items: [
-            { label: 'ICE Challenge 1', url: 'https://ameliasohh.github.io/week2/Challenge1/home.html' },
-            { label: 'ICE Challenge 2', url: 'https://ameliasohh.github.io/week2/Challenge2/home.html' },
-            { label: 'ICE Challenge 3', url: 'https://ameliasohh.github.io/week2/Challenge3/home.html' },
-        ],
-    },
-    {
-        week: 'Week 3',
-        emoji: '🎀',
-        items: [
-            { label: 'ICE Challenge 1', url: 'https://ameliasohh.github.io/week3/Challenge1/home.html' },
-            { label: 'ICE Challenge 2', url: 'https://ameliasohh.github.io/week3/Challenge2/home.html' },
-            { label: 'ICE Challenge 3', url: 'https://ameliasohh.github.io/week3/Challenge3/home.html' },
+            { label: 'Figma Prototype', url: 'https://www.figma.com/proto/eamTDRrnVMbrxa6H55aNrv/idp-iter-2?node-id=411-6190&p=f&t=pWTdCfEMVUBOA8Kv-1&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=537%3A7922' },
         ],
     },
 ];
+
+function ImageCarousel({ images }: { images: string[] }) {
+    const [current, setCurrent] = useState(0);
+    const [direction, setDirection] = useState(0);
+
+    const advance = useCallback((dir: number) => {
+        setDirection(dir);
+        setCurrent((prev) => (prev + dir + images.length) % images.length);
+    }, [images.length]);
+
+    useEffect(() => {
+        const timer = setInterval(() => advance(1), 4000);
+        return () => clearInterval(timer);
+    }, [advance]);
+
+    const variants = {
+        enter: (d: number) => ({ x: d > 0 ? 260 : -260, opacity: 0 }),
+        center: { x: 0, opacity: 1 },
+        exit: (d: number) => ({ x: d > 0 ? -260 : 260, opacity: 0 }),
+    };
+
+    return (
+        <div className="carousel">
+            <div className="carousel__viewport">
+                <AnimatePresence initial={false} custom={direction} mode="wait">
+                    <motion.img
+                        key={current}
+                        src={images[current]}
+                        alt={`Project screenshot ${current + 1}`}
+                        className="carousel__image"
+                        custom={direction}
+                        variants={variants}
+                        initial="enter"
+                        animate="center"
+                        exit="exit"
+                        transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                        draggable={false}
+                    />
+                </AnimatePresence>
+            </div>
+
+            <button className="carousel__arrow carousel__arrow--left" onClick={() => advance(-1)} aria-label="Previous image">
+                ‹
+            </button>
+            <button className="carousel__arrow carousel__arrow--right" onClick={() => advance(1)} aria-label="Next image">
+                ›
+            </button>
+
+            <div className="carousel__dots">
+                {images.map((_, i) => (
+                    <button
+                        key={i}
+                        className={`carousel__dot ${i === current ? 'carousel__dot--active' : ''}`}
+                        onClick={() => { setDirection(i > current ? 1 : -1); setCurrent(i); }}
+                        aria-label={`Go to image ${i + 1}`}
+                    />
+                ))}
+            </div>
+        </div>
+    );
+}
 
 export default function Projects() {
     const ref = useRef(null);
@@ -51,11 +103,13 @@ export default function Projects() {
                     animate={isInView ? { opacity: 1, y: 0 } : {}}
                     transition={{ duration: 0.6, delay: 0.1 }}
                 >
-                    Weekly ICE challenges & class projects 🚀
+
                 </motion.p>
 
+                <ImageCarousel images={['/Project1.png', '/Project2.png']} />
+
                 <div className="projects__timeline">
-                    {weeks.map((week, wi) => (
+                    {projects.map((project, wi) => (
                         <motion.div
                             key={wi}
                             className="projects__week"
@@ -64,12 +118,12 @@ export default function Projects() {
                             transition={{ delay: 0.2 + wi * 0.15, duration: 0.6 }}
                         >
                             <div className="projects__week-dot">
-                                <span>{week.emoji}</span>
+                                <span>{project.emoji}</span>
                             </div>
                             <div className="projects__week-card glass-card">
-                                <h3 className="projects__week-title">{week.week}</h3>
+                                <h3 className="projects__week-title">{project.name}</h3>
                                 <div className="projects__links">
-                                    {week.items.map((item, ii) => (
+                                    {project.items.map((item, ii) => (
                                         <motion.a
                                             key={ii}
                                             href={item.url}

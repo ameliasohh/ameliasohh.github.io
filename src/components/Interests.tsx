@@ -3,12 +3,12 @@ import { useRef } from 'react';
 import './Interests.css';
 
 const interests = [
-    { icon: '🎨', title: 'Art & Design', desc: 'Anything artsy makes my heart sing — drawing, crafts, aesthetics' },
-    { icon: '🎮', title: 'Gaming', desc: 'From casual mobile games to immersive adventures, count me in!' },
-    { icon: '🍜', title: 'Food', desc: 'Ramen, sushi, don-katsu, udon... basically all of Japanese cuisine' },
-    { icon: '✈️', title: 'Travel', desc: 'Exploring new places and cultures — Japan is my ultimate favourite' },
-    { icon: '🐱', title: 'Cats & Dogs', desc: 'Cannot resist a fluffy companion. I love them all equally!' },
-    { icon: '🎬', title: 'Movies', desc: 'Musical films and fantasy worlds — Wicked stole my heart' },
+    { icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg', title: 'Figma', desc: 'Designing user flows, wireframes, and high-fidelity prototypes' },
+    { icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg', title: 'Python', desc: 'Data analysis, scripting, and automating workflows' },
+    { icon: 'https://static.vecteezy.com/system/resources/thumbnails/027/179/363/small/microsoft-excel-icon-logo-symbol-free-png.png', title: 'Excel', desc: 'Pivot tables, dashboards, and data-driven decision making' },
+    { icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg', title: 'SQL', desc: 'Querying databases to extract insights and inform product decisions' },
+    { icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg', title: 'JavaScript', desc: 'Building interactive front-end features and web applications' },
+    { icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg', title: 'React', desc: 'Developing modern, component-based user interfaces' },
 ];
 
 export default function Interests() {
@@ -24,7 +24,7 @@ export default function Interests() {
                     animate={isInView ? { opacity: 1, y: 0 } : {}}
                     transition={{ duration: 0.6 }}
                 >
-                    My Interests
+                    My Skills
                 </motion.h2>
                 <motion.p
                     className="section-subtitle"
@@ -32,7 +32,7 @@ export default function Interests() {
                     animate={isInView ? { opacity: 1, y: 0 } : {}}
                     transition={{ duration: 0.6, delay: 0.1 }}
                 >
-                    Things that light up my day ☀️
+                    Tools & technologies I work with 🛠️
                 </motion.p>
 
                 <div className="interests__grid">
@@ -45,7 +45,7 @@ export default function Interests() {
                             transition={{ delay: 0.2 + i * 0.1, duration: 0.5 }}
                             whileHover={{ scale: 1.05, rotateY: 5, rotateX: -5 }}
                         >
-                            <div className="interests__icon">{item.icon}</div>
+                            <img src={item.icon} alt={item.title} className="interests__icon" />
                             <h3 className="interests__title">{item.title}</h3>
                             <p className="interests__desc">{item.desc}</p>
                         </motion.div>

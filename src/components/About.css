@@ -20,7 +20,6 @@
     display: flex;
     flex-direction: column;
     gap: 12px;
-    margin-bottom: 32px;
 }
 
 .about__fact {
@@ -51,32 +50,16 @@
     color: var(--clr-text);
 }
 
-.about__photo2-wrapper {
-    position: relative;
-    display: inline-block;
-    margin-top: 8px;
-}
-
-.about__photo2 {
-    width: 200px;
-    height: 200px;
-    object-fit: cover;
-    border-radius: var(--radius-lg);
-    box-shadow: var(--shadow-md);
-}
-
-.about__photo2-caption {
-    text-align: center;
-    margin-top: 8px;
-    font-size: 0.85rem;
-    color: var(--clr-text-muted);
-    font-weight: 500;
-}
-
-/* Image column */
-.about__image-col {
+/* Photos column */
+.about__photos-col {
     display: flex;
     justify-content: center;
+}
+
+.about__photos-row {
+    display: flex;
+    gap: 24px;
+    align-items: center;
 }
 
 .about__image-container {
@@ -85,43 +68,114 @@
 
 .about__image-bg-shape {
     position: absolute;
-    inset: -20px;
+    inset: -16px;
     background: var(--gradient-warm);
     border-radius: var(--radius-xl);
     transform: rotate(3deg);
-    opacity: 0.4;
+    opacity: 0.35;
 }
 
 .about__image {
     position: relative;
-    width: 380px;
-    height: 480px;
+    width: 220px;
+    height: 300px;
     object-fit: cover;
     border-radius: var(--radius-xl);
     box-shadow: var(--shadow-lg);
 }
 
+.about__photos-row .about__image-container:nth-child(2) {
+    margin-top: 40px;
+}
+
+.about__photos-row .about__image-container:nth-child(2) .about__image-bg-shape {
+    transform: rotate(-3deg);
+    background: var(--gradient-sunset);
+}
+
+/* ─── Soft Skills ───────────────────────────────────────── */
+.about__soft-skills {
+    margin-top: 72px;
+}
+
+.about__soft-skills-title {
+    font-family: var(--font-heading);
+    font-size: 1.6rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 32px;
+    color: var(--clr-text);
+}
+
+.about__soft-skills-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.about__skill-card {
+    padding: 28px 22px;
+    text-align: center;
+    cursor: default;
+}
+
+.about__skill-icon {
+    font-size: 2rem;
+    display: block;
+    margin-bottom: 12px;
+}
+
+.about__skill-label {
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: var(--clr-primary-dark);
+}
+
+.about__skill-desc {
+    font-size: 0.85rem;
+    color: var(--clr-text-muted);
+    line-height: 1.55;
+}
+
+/* ─── Responsive ────────────────────────────────────────── */
 @media (max-width: 900px) {
     .about__grid {
         grid-template-columns: 1fr;
         gap: 40px;
     }
 
-    .about__image-col {
+    .about__photos-col {
         order: -1;
     }
 
     .about__image {
-        width: 280px;
-        height: 350px;
+        width: 180px;
+        height: 250px;
     }
 
     .about__facts-title {
         text-align: center;
     }
 
-    .about__photo2-wrapper {
-        display: block;
-        text-align: center;
+    .about__soft-skills-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .about__photos-row {
+        gap: 14px;
+    }
+
+    .about__image {
+        width: 140px;
+        height: 200px;
+    }
+
+    .about__soft-skills-grid {
+        grid-template-columns: 1fr;
+        max-width: 360px;
+        margin: 0 auto;
     }
 }

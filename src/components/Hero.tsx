@@ -74,9 +74,9 @@ export default function Hero() {
                     >
                         <span className="hero__tag">🎓 Information Systems</span>
                         <span className="hero__tag-separator">·</span>
-                        <span className="hero__tag">🍜 Foodie</span>
+                        <span className="hero__tag">🔍Observant</span>
                         <span className="hero__tag-separator">·</span>
-                        <span className="hero__tag">🐱 Cat & Dog Lover</span>
+                        <span className="hero__tag">🎨Creative</span>
                     </motion.div>
 
                     <motion.p
@@ -85,7 +85,7 @@ export default function Hero() {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.8 }}
                     >
-                        The quiet, tired, and always hungry girl — living life one bowl of ramen at a time. 🍜
+                        I'm a driven and well-rounded student who uniquely combines technical fluency, user-centred design thinking, and a natural ability to connect people and ideas to create meaningful impact.
                     </motion.p>
 
                     <motion.div
@@ -112,7 +112,7 @@ export default function Hero() {
                         animate={{ y: [0, -8, 0] }}
                         transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
                     >
-                        ✨ Always Hungry
+                        ✨ Open to Summer Internship
                     </motion.div>
                 </motion.div>
             </div>

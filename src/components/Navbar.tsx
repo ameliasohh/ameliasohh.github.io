@@ -6,7 +6,6 @@ const navLinks = [
   { label: 'Home', href: '#hero' },
   { label: 'About', href: '#about' },
   { label: 'Interests', href: '#interests' },
-  { label: 'Travel', href: '#travel' },
   { label: 'Projects', href: '#projects' },
 ];
 
@@ -42,7 +41,7 @@ export default function Navbar() {
       <div className="navbar__inner container">
         <a href="#hero" className="navbar__logo">
           <span className="navbar__logo-icon">✨</span>
-          <span className="navbar__logo-text">Amelia</span>
+          <span className="navbar__logo-text">Amelia Soh </span>
         </a>
 
         <div className="navbar__links">

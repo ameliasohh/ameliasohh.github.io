@@ -1,6 +1,6 @@
 .footer {
     position: relative;
-    background: linear-gradient(135deg, #2d2d2d 0%, #1a1a2e 100%);
+    background: linear-gradient(135deg, #e972a1 100%);
     color: rgba(255, 255, 255, 0.85);
     padding-top: 80px;
 }
@@ -28,7 +28,7 @@
     justify-content: space-between;
     align-items: center;
     padding: 40px 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid rgba(139, 125, 68, 0.1);
 }
 
 .footer__brand {
@@ -77,7 +77,7 @@
     padding-top: 24px;
     text-align: center;
     font-size: 0.85rem;
-    color: rgba(255, 255, 255, 0.4);
+    color: rgba(247, 86, 86, 0.4);
 }
 
 @media (max-width: 600px) {
