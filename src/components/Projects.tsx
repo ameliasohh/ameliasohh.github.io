@@ -1,5 +1,5 @@
-import { motion, useInView, AnimatePresence } from 'framer-motion';
-import { useRef, useState, useEffect, useCallback } from 'react';
+import { motion, useInView } from 'framer-motion';
+import { useRef } from 'react';
 import './Projects.css';
 
 const projects = [
@@ -21,22 +21,7 @@ const projects = [
     },
 ];
 
-function Carousel({ images }: { images: string[] }) {
-    const [idx, setIdx] = useState(0);
-    const [dir, setDir] = useState(1);
 
-    const go = useCallback((d: number) => {
-        setDir(d);
-        setIdx(p => (p + d + images.length) % images.length);
-    }, [images.length]);
-
-    useEffect(() => {
-        const t = setInterval(() => go(1), 4500);
-        return () => clearInterval(t);
-    }, [go]);
-
-    
-}
 
 export default function Projects() {
     const ref = useRef(null);
