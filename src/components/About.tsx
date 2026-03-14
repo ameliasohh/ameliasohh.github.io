@@ -20,15 +20,15 @@ const softSkills = [
     { label: 'Data-Driven', desc: 'Backing decisions with metrics & insights' },
 ];
 
-const container = {
-    hidden: {},
-    show: { transition: { staggerChildren: 0.08 } },
-};
+// const container = {
+//     hidden: {},
+//     show: { transition: { staggerChildren: 0.08 } },
+// };
 
-const item = {
-    hidden: { opacity: 0, y: 20 },
-    show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] } },
-};
+// const item = {
+//     hidden: { opacity: 0, y: 20 },
+//     show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] } },
+// };
 
 export default function About() {
     const ref = useRef(null);
@@ -84,12 +84,12 @@ export default function About() {
 
                         <motion.ul
                             className="about__facts"
-                            variants={container}
+                         
                             initial="hidden"
                             animate={isInView ? 'show' : 'hidden'}
                         >
                             {facts.map((f, i) => (
-                                <motion.li key={i} className="about__fact" variants={item}>
+                                <motion.li key={i} className="about__fact" >
                                     <span className="about__fact-num">0{i + 1}</span>
                                     <span className="about__fact-text">{f.label}</span>
                                 </motion.li>

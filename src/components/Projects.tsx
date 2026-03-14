@@ -65,8 +65,7 @@ export default function Projects() {
                             transition={{ delay: 0.15 + i * 0.15, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
                         >
                             <div className="project__media">
-                                <Carousel images={project.images} />
-                            </div>
+                                   </div>
                             <div className="project__info">
                                 <div className="project__meta">
                                     <span className="project__tag">{project.tag}</span>
