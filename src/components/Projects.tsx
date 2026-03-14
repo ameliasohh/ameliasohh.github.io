@@ -5,140 +5,94 @@ import './Projects.css';
 const projects = [
     {
         name: 'CritterConnect',
-        emoji: '🐾',
+        year: '2025 Project',
+        tag: 'Full-stack Web App',
+        desc: 'A platform connecting the general public and animal rescue organisations.',
         images: ['/Project1.png', '/Project2.png'],
-        items: [
-            { label: "CritterConnect Website", url: 'https://wad2-92dca.web.app/' },
-        ],
+        links: [{ label: 'Live site', url: 'https://wad2-92dca.web.app/' }],
     },
     {
         name: 'PocketPlan',
-        emoji: '💰',
+        year: '2024',
+        tag: 'UX Design',
+        desc: 'A personal finance app prototype designed for Gen Z users.',
         images: ['/Project1.png', '/Project2.png'],
-        items: [
-            { label: 'Figma Prototype', url: 'https://www.figma.com/proto/eamTDRrnVMbrxa6H55aNrv/idp-iter-2?node-id=411-6190&p=f&t=pWTdCfEMVUBOA8Kv-1&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=537%3A7922' },
-        ],
+        links: [{ label: 'Figma prototype', url: 'https://www.figma.com/proto/eamTDRrnVMbrxa6H55aNrv/idp-iter-2?node-id=411-6190&p=f&t=pWTdCfEMVUBOA8Kv-1&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=537%3A7922' }],
     },
 ];
 
-function ImageCarousel({ images }: { images: string[] }) {
-    const [current, setCurrent] = useState(0);
-    const [direction, setDirection] = useState(0);
+function Carousel({ images }: { images: string[] }) {
+    const [idx, setIdx] = useState(0);
+    const [dir, setDir] = useState(1);
 
-    const advance = useCallback((dir: number) => {
-        setDirection(dir);
-        setCurrent((prev) => (prev + dir + images.length) % images.length);
+    const go = useCallback((d: number) => {
+        setDir(d);
+        setIdx(p => (p + d + images.length) % images.length);
     }, [images.length]);
 
     useEffect(() => {
-        const timer = setInterval(() => advance(1), 4000);
-        return () => clearInterval(timer);
-    }, [advance]);
+        const t = setInterval(() => go(1), 4500);
+        return () => clearInterval(t);
+    }, [go]);
 
-    const variants = {
-        enter: (d: number) => ({ x: d > 0 ? 260 : -260, opacity: 0 }),
-        center: { x: 0, opacity: 1 },
-        exit: (d: number) => ({ x: d > 0 ? -260 : 260, opacity: 0 }),
-    };
-
-    return (
-        <div className="carousel">
-            <div className="carousel__viewport">
-                <AnimatePresence initial={false} custom={direction} mode="wait">
-                    <motion.img
-                        key={current}
-                        src={images[current]}
-                        alt={`Project screenshot ${current + 1}`}
-                        className="carousel__image"
-                        custom={direction}
-                        variants={variants}
-                        initial="enter"
-                        animate="center"
-                        exit="exit"
-                        transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-                        draggable={false}
-                    />
-                </AnimatePresence>
-            </div>
-
-            <button className="carousel__arrow carousel__arrow--left" onClick={() => advance(-1)} aria-label="Previous image">
-                ‹
-            </button>
-            <button className="carousel__arrow carousel__arrow--right" onClick={() => advance(1)} aria-label="Next image">
-                ›
-            </button>
-
-            <div className="carousel__dots">
-                {images.map((_, i) => (
-                    <button
-                        key={i}
-                        className={`carousel__dot ${i === current ? 'carousel__dot--active' : ''}`}
-                        onClick={() => { setDirection(i > current ? 1 : -1); setCurrent(i); }}
-                        aria-label={`Go to image ${i + 1}`}
-                    />
-                ))}
-            </div>
-        </div>
-    );
+    
 }
 
 export default function Projects() {
     const ref = useRef(null);
-    const isInView = useInView(ref, { once: true, margin: '-100px' });
+    const isInView = useInView(ref, { once: true, margin: '-80px' });
 
     return (
         <section id="projects" className="projects section">
             <div className="container" ref={ref}>
-                <motion.h2
-                    className="section-title"
-                    initial={{ opacity: 0, y: 30 }}
+                <motion.div
+                    className="projects__header"
+                    initial={{ opacity: 0, y: 24 }}
                     animate={isInView ? { opacity: 1, y: 0 } : {}}
                     transition={{ duration: 0.6 }}
                 >
-                    My Projects
-                </motion.h2>
-                <motion.p
-                    className="section-subtitle"
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={isInView ? { opacity: 1, y: 0 } : {}}
-                    transition={{ duration: 0.6, delay: 0.1 }}
-                >
+                    <p className="projects__label">03 / Projects</p>
+                    <h2 className="section-title">Things I've <em>built</em></h2>
+                </motion.div>
 
-                </motion.p>
-
-                <ImageCarousel images={['/Project1.png', '/Project2.png']} />
-
-                <div className="projects__timeline">
-                    {projects.map((project, wi) => (
-                        <motion.div
-                            key={wi}
-                            className="projects__week"
-                            initial={{ opacity: 0, x: wi % 2 === 0 ? -40 : 40 }}
-                            animate={isInView ? { opacity: 1, x: 0 } : {}}
-                            transition={{ delay: 0.2 + wi * 0.15, duration: 0.6 }}
+                <div className="projects__list">
+                    {projects.map((project, i) => (
+                        <motion.article
+                            key={i}
+                            className="project"
+                            initial={{ opacity: 0, y: 32 }}
+                            animate={isInView ? { opacity: 1, y: 0 } : {}}
+                            transition={{ delay: 0.15 + i * 0.15, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
                         >
-                            <div className="projects__week-dot">
-                                <span>{project.emoji}</span>
+                            <div className="project__media">
+                                <Carousel images={project.images} />
                             </div>
-                            <div className="projects__week-card glass-card">
-                                <h3 className="projects__week-title">{project.name}</h3>
-                                <div className="projects__links">
-                                    {project.items.map((item, ii) => (
+                            <div className="project__info">
+                                <div className="project__meta">
+                                    <span className="project__tag">{project.tag}</span>
+                                    <span className="project__year">{project.year}</span>
+                                </div>
+                                <h3 className="project__name">{project.name}</h3>
+                                <p className="project__desc">{project.desc}</p>
+                                <div className="project__links">
+                                    {project.links.map((link, j) => (
                                         <motion.a
-                                            key={ii}
-                                            href={item.url}
+                                            key={j}
+                                            href={link.url}
                                             target="_blank"
                                             rel="noopener noreferrer"
-                                            className="projects__link"
-                                            whileHover={{ x: 6 }}
+                                            className="project__link"
+                                            whileHover={{ x: 4 }}
                                         >
-                                            <span className="projects__link-icon">↗</span>
-                                            {item.label}
+                                            {link.label}
+                                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                                                <path d="M7 17L17 7M17 7H7M17 7v10"/>
+                                            </svg>
                                         </motion.a>
                                     ))}
                                 </div>
                             </div>
-                        </motion.div>
+                        </motion.article>
                     ))}
                 </div>
             </div>

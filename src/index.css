@@ -1,177 +1,162 @@
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,600&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300;1,9..40,400&family=Caveat:wght@500;600&display=swap');
 
 /* ─── Design Tokens ────────────────────────────────────── */
 :root {
-  /* Primary palette — warm coral & pink */
-  --clr-primary: #e8678d;
-  --clr-primary-light: #f7a5bb;
-  --clr-primary-dark: #c94b72;
-  --clr-accent: #f9a826;
-  --clr-accent-light: #ffd166;
+  /* Paper palette — warm ivory, ink, dusty rose */
+  --ink:        oklch(18% 0.02 50);
+  --ink-light:  oklch(38% 0.02 50);
+  --ink-muted:  oklch(56% 0.02 50);
 
-  /* Neutrals */
-  --clr-bg: #fdf6f0;
-  --clr-bg-alt: #fff5ee;
-  --clr-surface: #ffffff;
-  --clr-surface-glass: rgba(255, 255, 255, 0.6);
-  --clr-text: #2d2d2d;
-  --clr-text-muted: #6b6b6b;
-  --clr-text-light: #999999;
-  --clr-border: rgba(0, 0, 0, 0.06);
+  --paper:      oklch(98% 0.015 80);
+  --paper-warm: oklch(96% 0.022 75);
+  --paper-deep: oklch(93% 0.028 72);
 
-  /* Gradients */
-  --gradient-hero: linear-gradient(135deg, #fce4ec 0%, #f8bbd0 30%, #f48fb1 60%, #ec6fa0 100%);
-  --gradient-warm: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
-  --gradient-sunset: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-  --gradient-card: linear-gradient(145deg, rgba(255,255,255,0.8), rgba(255,255,255,0.3));
+  --rose:       oklch(62% 0.14 5);
+  --rose-light: oklch(88% 0.06 5);
+  --rose-pale:  oklch(95% 0.03 5);
 
-  /* Shadows */
-  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
-  --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.08);
-  --shadow-lg: 0 8px 40px rgba(0, 0, 0, 0.12);
-  --shadow-glow: 0 0 30px rgba(232, 103, 141, 0.3);
+  --sage:       oklch(58% 0.08 155);
+  --sage-light: oklch(88% 0.05 155);
+
+  --gold:       oklch(72% 0.12 75);
+  --gold-light: oklch(92% 0.05 75);
+
+  --surface:    oklch(100% 0 0);
+  --border:     oklch(88% 0.02 75);
+  --border-soft:oklch(93% 0.015 75);
 
   /* Typography */
-  --font-heading: 'Outfit', sans-serif;
-  --font-body: 'Inter', sans-serif;
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-body:    'DM Sans', system-ui, sans-serif;
+  --font-hand:    'Caveat', cursive;
 
   /* Spacing */
-  --section-padding: 100px 0;
-  --container-width: 1200px;
+  --s-1:  0.25rem;
+  --s-2:  0.5rem;
+  --s-3:  0.75rem;
+  --s-4:  1rem;
+  --s-5:  1.25rem;
+  --s-6:  1.5rem;
+  --s-8:  2rem;
+  --s-10: 2.5rem;
+  --s-12: 3rem;
+  --s-16: 4rem;
+  --s-20: 5rem;
+  --s-24: 6rem;
 
-  /* Borders */
-  --radius-sm: 8px;
-  --radius-md: 16px;
-  --radius-lg: 24px;
-  --radius-xl: 32px;
-  --radius-full: 9999px;
+  --radius-sm: 4px;
+  --radius-md: 10px;
+  --radius-lg: 20px;
+  --radius-xl: 40px;
 
-  /* Transitions */
+  --shadow-xs: 0 1px 3px oklch(18% 0.02 50 / 0.06);
+  --shadow-sm: 0 2px 8px oklch(18% 0.02 50 / 0.08), 0 1px 3px oklch(18% 0.02 50 / 0.04);
+  --shadow-md: 0 4px 20px oklch(18% 0.02 50 / 0.10), 0 2px 6px oklch(18% 0.02 50 / 0.05);
+  --shadow-lg: 0 8px 40px oklch(18% 0.02 50 / 0.12);
+
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
-  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-spring: cubic-bezier(0.34, 1.36, 0.64, 1);
 }
 
-/* ─── Reset & Base ─────────────────────────────────────── */
-*,
-*::before,
-*::after {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+/* ─── Reset ────────────────────────────────────────────── */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
-html {
-  scroll-behavior: smooth;
-  font-size: 16px;
-}
+html { scroll-behavior: smooth; font-size: 16px; }
 
 body {
   font-family: var(--font-body);
-  color: var(--clr-text);
-  background-color: var(--clr-bg);
+  color: var(--ink);
+  background: var(--paper);
   line-height: 1.7;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-heading);
-  font-weight: 700;
-  line-height: 1.2;
-}
+h1, h2, h3 { font-family: var(--font-display); line-height: 1.15; }
+h4, h5, h6 { font-family: var(--font-body); line-height: 1.3; }
 
-a {
-  text-decoration: none;
-  color: inherit;
-  transition: color 0.3s var(--ease-out);
-}
+a { text-decoration: none; color: inherit; }
 
-img {
-  max-width: 100%;
-  height: auto;
-  display: block;
-}
+img { max-width: 100%; height: auto; display: block; }
 
-/* ─── Custom Scrollbar ──────────────────────────────────── */
-::-webkit-scrollbar {
-  width: 8px;
-}
-::-webkit-scrollbar-track {
-  background: var(--clr-bg);
-}
-::-webkit-scrollbar-thumb {
-  background: var(--clr-primary-light);
-  border-radius: var(--radius-full);
-}
-::-webkit-scrollbar-thumb:hover {
-  background: var(--clr-primary);
-}
+/* ─── Scrollbar ─────────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--paper); }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 99px; }
 
-/* ─── Utility Classes ──────────────────────────────────── */
-.container {
-  max-width: var(--container-width);
-  margin: 0 auto;
-  padding: 0 24px;
-}
+/* ─── Utilities ─────────────────────────────────────────── */
+.container { max-width: 1100px; margin: 0 auto; padding: 0 clamp(1.25rem, 5vw, 3rem); }
 
-.section {
-  padding: var(--section-padding);
-  position: relative;
-}
+.section { padding: clamp(4rem, 8vw, 7rem) 0; position: relative; }
 
+/* Section titles — editorial style, left-aligned, serif */
 .section-title {
-  font-size: clamp(2rem, 4vw, 3rem);
-  font-weight: 800;
-  text-align: center;
-  margin-bottom: 16px;
-  background: linear-gradient(135deg, var(--clr-primary), var(--clr-accent));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 4vw, 3.2rem);
+  font-weight: 700;
+  color: var(--ink);
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  margin-bottom: var(--s-3);
+}
+
+.section-title em {
+  font-style: italic;
+  color: var(--rose);
 }
 
 .section-subtitle {
-  text-align: center;
-  color: var(--clr-text-muted);
-  font-size: 1.1rem;
-  max-width: 600px;
-  margin: 0 auto 60px;
+  font-size: 1rem;
+  color: var(--ink-muted);
+  font-weight: 400;
+  margin-bottom: clamp(2.5rem, 5vw, 4rem);
+  max-width: 520px;
 }
 
-.glass-card {
-  background: var(--clr-surface-glass);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid var(--clr-border);
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-md);
-  transition: transform 0.4s var(--ease-out), box-shadow 0.4s var(--ease-out);
+/* ─── Animations ─────────────────────────────────────────── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.94); }
+  to   { opacity: 1; transform: scale(1); }
 }
 
-.glass-card:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-lg);
+/* ─── Navbar offset for anchor scroll ──────────────────── */
+html {
+    scroll-padding-top: 80px;
 }
 
-/* ─── Animations ────────────────────────────────────────── */
-@keyframes float {
-  0%, 100% { transform: translateY(0px) rotate(0deg); }
-  50% { transform: translateY(-20px) rotate(2deg); }
+/* ─── Section dividers ─────────────────────────────────── */
+/* Alternating bg already handled per-section in component CSS */
+
+/* ─── Selection colour ─────────────────────────────────── */
+::selection {
+    background: oklch(88% 0.06 5);   /* soft rose */
+    color: var(--ink);
 }
 
-@keyframes pulse-glow {
-  0%, 100% { box-shadow: 0 0 20px rgba(232, 103, 141, 0.2); }
-  50% { box-shadow: 0 0 40px rgba(232, 103, 141, 0.4); }
+/* ─── Focus ring ────────────────────────────────────────── */
+:focus-visible {
+    outline: 2px solid var(--rose);
+    outline-offset: 3px;
+    border-radius: 3px;
 }
 
-@keyframes gradient-shift {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+/* ─── Smooth image load ─────────────────────────────────── */
+img {
+    transition: opacity 0.3s ease;
 }
 
-@keyframes spin-slow {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+img[loading='lazy'] {
+    opacity: 0;
+}
+
+img[loading='lazy'].loaded {
+    opacity: 1;
 }

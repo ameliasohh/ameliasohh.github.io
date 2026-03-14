@@ -1,181 +1,207 @@
+/* ─── About ─────────────────────────────────────────────── */
 .about {
-    background: var(--clr-bg);
+    background: var(--paper-warm);
 }
 
+.about__header {
+    margin-bottom: clamp(2.5rem, 5vw, 4rem);
+}
+
+.about__header-label {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--rose);
+    margin-bottom: var(--s-3);
+}
+
+/* Main two-column layout — photos lead */
 .about__grid {
     display: grid;
+    grid-template-columns: 380px 1fr;
+    gap: clamp(2rem, 6vw, 5rem);
+    align-items: start;
+    margin-bottom: clamp(3rem, 6vw, 5rem);
+}
+
+/* Photos */
+.about__photos {
+    position: relative;
+    display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 60px;
-    align-items: center;
+    gap: var(--s-3);
+    align-items: end;
 }
 
-.about__facts-title {
-    font-size: 1.8rem;
-    font-weight: 700;
-    margin-bottom: 24px;
-    color: var(--clr-text);
+.about__photo-main {
+    grid-column: 1 / -1;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    aspect-ratio: 4 / 3;
+    box-shadow: var(--shadow-md);
 }
 
-.about__facts-list {
+.about__photo-main img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s var(--ease-out);
+}
+
+.about__photo-main:hover img { transform: scale(1.04); }
+
+.about__photo-accent {
+    position: relative;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    aspect-ratio: 1;
+    box-shadow: var(--shadow-sm);
+    background: var(--rose-pale);
+}
+
+.about__photo-accent img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.about__photo-caption {
+    position: absolute;
+    bottom: var(--s-2);
+    left: var(--s-2);
+    right: var(--s-2);
+    font-family: var(--font-hand);
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--paper);
+    background: oklch(18% 0.02 50 / 0.55);
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    text-align: center;
+}
+
+/* Content side */
+.about__intro {
+    font-family: var(--font-display);
+    font-size: clamp(1.1rem, 1.6vw, 1.3rem);
+    font-style: italic;
+    color: var(--ink);
+    line-height: 1.65;
+    margin-bottom: var(--s-8);
+    max-width: 44ch;
+}
+
+.about__facts {
+    list-style: none;
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 0;
+    border-top: 1px solid var(--border);
 }
 
 .about__fact {
     display: flex;
-    align-items: center;
-    gap: 14px;
-    padding: 14px 20px;
-    background: var(--clr-surface);
-    border-radius: var(--radius-md);
-    box-shadow: var(--shadow-sm);
-    transition: all 0.3s var(--ease-out);
+    align-items: baseline;
+    gap: var(--s-4);
+    padding: var(--s-4) 0;
+    border-bottom: 1px solid var(--border-soft);
+    transition: background 0.2s;
 }
 
-.about__fact:hover {
-    transform: translateX(8px);
-    box-shadow: var(--shadow-md);
-    background: linear-gradient(135deg, rgba(232, 103, 141, 0.05), rgba(249, 168, 38, 0.05));
-}
+.about__fact:hover { background: var(--rose-pale); margin: 0 calc(-1 * var(--s-3)); padding-left: var(--s-3); padding-right: var(--s-3); }
 
-.about__fact-emoji {
-    font-size: 1.4rem;
+.about__fact-num {
+    font-family: var(--font-display);
+    font-size: 0.75rem;
+    font-weight: 400;
+    color: var(--rose);
+    letter-spacing: 0.05em;
     flex-shrink: 0;
+    min-width: 24px;
 }
 
 .about__fact-text {
-    font-size: 1rem;
-    font-weight: 500;
-    color: var(--clr-text);
+    font-size: 0.9375rem;
+    font-weight: 400;
+    color: var(--ink);
+    line-height: 1.5;
 }
 
-/* Photos column */
-.about__photos-col {
+/* Skills strip */
+.about__skills-header {
     display: flex;
-    justify-content: center;
-}
-
-.about__photos-row {
-    display: flex;
-    gap: 24px;
     align-items: center;
+    gap: var(--s-6);
+    margin-bottom: var(--s-8);
 }
 
-.about__image-container {
-    position: relative;
+.about__skills-title {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    font-weight: 600;
+    font-style: italic;
+    color: var(--ink);
+    white-space: nowrap;
 }
 
-.about__image-bg-shape {
-    position: absolute;
-    inset: -16px;
-    background: var(--gradient-warm);
-    border-radius: var(--radius-xl);
-    transform: rotate(3deg);
-    opacity: 0.35;
+.about__skills-rule {
+    flex: 1;
+    height: 1px;
+    background: var(--border);
 }
 
-.about__image {
-    position: relative;
-    width: 220px;
-    height: 300px;
-    object-fit: cover;
-    border-radius: var(--radius-xl);
-    box-shadow: var(--shadow-lg);
-}
-
-.about__photos-row .about__image-container:nth-child(2) {
-    margin-top: 40px;
-}
-
-.about__photos-row .about__image-container:nth-child(2) .about__image-bg-shape {
-    transform: rotate(-3deg);
-    background: var(--gradient-sunset);
-}
-
-/* ─── Soft Skills ───────────────────────────────────────── */
-.about__soft-skills {
-    margin-top: 72px;
-}
-
-.about__soft-skills-title {
-    font-family: var(--font-heading);
-    font-size: 1.6rem;
-    font-weight: 700;
-    text-align: center;
-    margin-bottom: 32px;
-    color: var(--clr-text);
-}
-
-.about__soft-skills-grid {
+.about__skills-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
+    gap: var(--s-1);
 }
 
-.about__skill-card {
-    padding: 28px 22px;
-    text-align: center;
+.about__skill {
+    padding: var(--s-5) var(--s-6);
+    border: 1px solid var(--border-soft);
+    border-radius: var(--radius-md);
+    background: var(--surface);
+    transition: all 0.25s var(--ease-out);
     cursor: default;
 }
 
-.about__skill-icon {
-    font-size: 2rem;
-    display: block;
-    margin-bottom: 12px;
+.about__skill:hover {
+    border-color: var(--rose);
+    box-shadow: var(--shadow-sm);
 }
 
 .about__skill-label {
-    font-size: 1.05rem;
-    font-weight: 700;
-    margin-bottom: 8px;
-    color: var(--clr-primary-dark);
+    font-family: var(--font-body);
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: var(--s-1);
+    letter-spacing: -0.01em;
 }
 
 .about__skill-desc {
-    font-size: 0.85rem;
-    color: var(--clr-text-muted);
-    line-height: 1.55;
+    font-size: 0.8125rem;
+    color: var(--ink-muted);
+    line-height: 1.5;
+    font-weight: 300;
 }
 
-/* ─── Responsive ────────────────────────────────────────── */
-@media (max-width: 900px) {
+/* Responsive */
+@media (max-width: 860px) {
     .about__grid {
         grid-template-columns: 1fr;
-        gap: 40px;
     }
 
-    .about__photos-col {
-        order: -1;
+    .about__photos {
+        max-width: 420px;
     }
 
-    .about__image {
-        width: 180px;
-        height: 250px;
-    }
-
-    .about__facts-title {
-        text-align: center;
-    }
-
-    .about__soft-skills-grid {
+    .about__skills-grid {
         grid-template-columns: repeat(2, 1fr);
     }
 }
 
-@media (max-width: 600px) {
-    .about__photos-row {
-        gap: 14px;
-    }
-
-    .about__image {
-        width: 140px;
-        height: 200px;
-    }
-
-    .about__soft-skills-grid {
-        grid-template-columns: 1fr;
-        max-width: 360px;
-        margin: 0 auto;
-    }
+@media (max-width: 540px) {
+    .about__skills-grid { grid-template-columns: 1fr; }
 }

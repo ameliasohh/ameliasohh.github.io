@@ -3,109 +3,122 @@ import { useRef } from 'react';
 import './About.css';
 
 const facts = [
-    { emoji: '💻', text: 'Year 2 Information Systems Student' },
-    { emoji: '🎮', text: 'SMU Esports Marketing Director' },
-    { emoji: '🎨', text: 'Creative and Hardworking Individual' },
-    { emoji: '🐱', text: 'Cat & Dog Lover' },
+    { label: 'Year 2 Information Systems Student at SMU' },
+    { label: 'SMU Esports Marketing Director' },
+    { label: 'Creative and Hardworking Individual' },
+    { label: 'Product Mindset' },
+    { label: 'Cat & Dog Lover' },
+
 ];
 
 const softSkills = [
-    { icon: '🗣️', label: 'Communication', desc: 'Translating ideas across stakeholders clearly' },
-    { icon: '🤝', label: 'Collaboration', desc: 'Working cross-functionally with dev, design & biz teams' },
-    { icon: '🧩', label: 'Problem Solving', desc: 'Breaking down ambiguity into actionable solutions' },
-    { icon: '📋', label: 'Prioritisation', desc: 'Deciding what matters most and saying no to the rest' },
-    { icon: '🔍', label: 'User Empathy', desc: 'Understanding user pain points through research' },
-    { icon: '📈', label: 'Data-Driven', desc: 'Backing decisions with metrics & insights' },
+    { label: 'Communication', desc: 'Translating ideas across stakeholders clearly' },
+    { label: 'Collaboration', desc: 'Working cross-functionally with dev, design & biz teams' },
+    { label: 'Problem Solving', desc: 'Breaking down ambiguity into actionable solutions' },
+    { label: 'Prioritisation', desc: 'Deciding what matters most' },
+    { label: 'User Empathy', desc: 'Understanding user pain points through research' },
+    { label: 'Data-Driven', desc: 'Backing decisions with metrics & insights' },
 ];
+
+const container = {
+    hidden: {},
+    show: { transition: { staggerChildren: 0.08 } },
+};
+
+const item = {
+    hidden: { opacity: 0, y: 20 },
+    show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] } },
+};
 
 export default function About() {
     const ref = useRef(null);
-    const isInView = useInView(ref, { once: true, margin: '-100px' });
+    const isInView = useInView(ref, { once: true, margin: '-80px' });
 
     return (
         <section id="about" className="about section">
             <div className="container" ref={ref}>
-                <motion.h2
-                    className="section-title"
-                    initial={{ opacity: 0, y: 30 }}
+
+                {/* Section header — left-aligned, editorial */}
+                <motion.div
+                    className="about__header"
+                    initial={{ opacity: 0, y: 24 }}
                     animate={isInView ? { opacity: 1, y: 0 } : {}}
                     transition={{ duration: 0.6 }}
                 >
-                    About Me
-                </motion.h2>
-                <motion.p
-                    className="section-subtitle"
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={isInView ? { opacity: 1, y: 0 } : {}}
-                    transition={{ duration: 0.6, delay: 0.1 }}
-                >
-                    A little peek into who I am ✨
-                </motion.p>
+                    <p className="about__header-label">01 / About</p>
+                    <h2 className="section-title">A little<br /><em>about me</em></h2>
+                </motion.div>
 
+                {/* Main grid: facts + photos */}
                 <div className="about__grid">
-                    {/* Facts column */}
+                    {/* Photos — lead column */}
                     <motion.div
-                        className="about__facts"
-                        initial={{ opacity: 0, x: -40 }}
+                        className="about__photos"
+                        initial={{ opacity: 0, x: -30 }}
                         animate={isInView ? { opacity: 1, x: 0 } : {}}
-                        transition={{ duration: 0.7, delay: 0.2 }}
+                        transition={{ duration: 0.7, delay: 0.15 }}
                     >
-                        <h3 className="about__facts-title">I am a...</h3>
-                        <div className="about__facts-list">
-                            {facts.map((fact, i) => (
-                                <motion.div
-                                    key={i}
-                                    className="about__fact"
-                                    initial={{ opacity: 0, x: -20 }}
-                                    animate={isInView ? { opacity: 1, x: 0 } : {}}
-                                    transition={{ delay: 0.3 + i * 0.1 }}
-                                >
-                                    <span className="about__fact-emoji">{fact.emoji}</span>
-                                    <span className="about__fact-text">{fact.text}</span>
-                                </motion.div>
-                            ))}
+                        <div className="about__photo-main">
+                            <img src="/MyPicture.jpg" alt="Amelia Soh" />
+                        </div>
+                        <div className="about__photo-accent">
+                            <img src="/Amelia.png" alt="Amelia Soh" />
+                            <span className="about__photo-caption">That's me!</span>
+                        </div>
+                                                <div className="about__photo-accent">
+                            <img src="/photo2.jpg" alt="Amelia Soh" />
+
                         </div>
                     </motion.div>
 
-                    {/* Photos column */}
-                    <motion.div
-                        className="about__photos-col"
-                        initial={{ opacity: 0, x: 40 }}
-                        animate={isInView ? { opacity: 1, x: 0 } : {}}
-                        transition={{ duration: 0.7, delay: 0.3 }}
-                    >
-                        <div className="about__photos-row">
-                            <div className="about__image-container">
-                                <div className="about__image-bg-shape" />
-                                <img src="/MyPicture.jpg" alt="Amelia Soh" className="about__image" />
-                            </div>
-                            <div className="about__image-container">
-                                <div className="about__image-bg-shape" />
-                                <img src="/Amelia.png" alt="Amelia Soh" className="about__image" />
-                            </div>
-                        </div>
-                    </motion.div>
+                    {/* Facts */}
+                    <div className="about__content">
+                        <motion.p
+                            className="about__intro"
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={isInView ? { opacity: 1, y: 0 } : {}}
+                            transition={{ duration: 0.6, delay: 0.2 }}
+                        >
+                            I'm a driven Year 2 IS student who thrives where technology, people, and creativity intersect.
+                        </motion.p>
+
+                        <motion.ul
+                            className="about__facts"
+                            variants={container}
+                            initial="hidden"
+                            animate={isInView ? 'show' : 'hidden'}
+                        >
+                            {facts.map((f, i) => (
+                                <motion.li key={i} className="about__fact" variants={item}>
+                                    <span className="about__fact-num">0{i + 1}</span>
+                                    <span className="about__fact-text">{f.label}</span>
+                                </motion.li>
+                            ))}
+                        </motion.ul>
+                    </div>
                 </div>
 
-                {/* Soft Skills */}
+                {/* Soft skills — horizontal strip, not cards */}
                 <motion.div
-                    className="about__soft-skills"
-                    initial={{ opacity: 0, y: 40 }}
+                    className="about__skills"
+                    initial={{ opacity: 0, y: 32 }}
                     animate={isInView ? { opacity: 1, y: 0 } : {}}
-                    transition={{ duration: 0.7, delay: 0.6 }}
+                    transition={{ duration: 0.6, delay: 0.5 }}
                 >
-                    <h3 className="about__soft-skills-title">What I Bring to the Table </h3>
-                    <div className="about__soft-skills-grid">
+                    <div className="about__skills-header">
+                        <h3 className="about__skills-title">What I bring to the table</h3>
+                        <div className="about__skills-rule" />
+                    </div>
+                    <div className="about__skills-grid">
                         {softSkills.map((skill, i) => (
                             <motion.div
                                 key={i}
-                                className="about__skill-card glass-card"
-                                initial={{ opacity: 0, y: 20 }}
+                                className="about__skill"
+                                initial={{ opacity: 0, y: 16 }}
                                 animate={isInView ? { opacity: 1, y: 0 } : {}}
-                                transition={{ delay: 0.7 + i * 0.08 }}
-                                whileHover={{ scale: 1.04, y: -4 }}
+                                transition={{ delay: 0.55 + i * 0.07 }}
+                                whileHover={{ y: -3 }}
                             >
-                                <span className="about__skill-icon">{skill.icon}</span>
                                 <h4 className="about__skill-label">{skill.label}</h4>
                                 <p className="about__skill-desc">{skill.desc}</p>
                             </motion.div>
